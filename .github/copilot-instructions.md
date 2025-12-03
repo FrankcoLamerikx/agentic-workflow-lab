@@ -8,6 +8,11 @@
 
 This is a learning lab for GitHub Copilot's context engineering features. The Task Manager CLI serves as a simple, practical example application for demonstrating how to effectively use custom instructions, custom agents, and prompt files to guide AI-assisted development.
 
+
+## Architectural Patterns
+
+- **Sealed Classes by Default**: Always make classes `sealed` by default unless they are not leaves in the derivation tree (i.e., unless they are intended to be base classes for further inheritance). This prevents unintended inheritance, improves code safety, and clarifies design intent. Only omit `sealed` if the class is explicitly designed to be extended.
+
 ## Key Principles
 
 - Keep the implementation simple and focused on core functionality
