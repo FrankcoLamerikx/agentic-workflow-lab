@@ -29,5 +29,18 @@ namespace TaskManager.Services
         {
             return _repository.GetAll();
         }
+
+        public void CompleteTask(int taskNumber)
+        {
+            var tasks = _repository.GetAll();
+            if (taskNumber < 1 || taskNumber > tasks.Count)
+            {
+                throw new ArgumentException($"Invalid task number. Please enter a number between 1 and {tasks.Count}.");
+            }
+
+            var task = tasks[taskNumber - 1];
+            task.IsCompleted = true;
+            _repository.Update(task);
+        }
     }
 }

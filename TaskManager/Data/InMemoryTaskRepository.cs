@@ -30,5 +30,15 @@ namespace TaskManager.Data
         {
             return _tasks.FirstOrDefault(t => t.Id == id);
         }
+
+        public void Update(Task task)
+        {
+            var existingTask = GetById(task.Id);
+            if (existingTask != null)
+            {
+                existingTask.Description = task.Description;
+                existingTask.IsCompleted = task.IsCompleted;
+            }
+        }
     }
 }

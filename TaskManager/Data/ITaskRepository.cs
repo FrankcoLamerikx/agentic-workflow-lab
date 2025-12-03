@@ -26,5 +26,11 @@ namespace TaskManager.Data
         /// <param name="id">The identifier of the task.</param>
         /// <returns>The task with the specified id, or null if not found.</returns>
         Task GetById(int id);
+
+        /// <summary>
+        /// Updates an existing task in the repository.
+        /// </summary>
+        /// <param name="task">The task to update.</param>
+        void Update(Task task);
     }
 }

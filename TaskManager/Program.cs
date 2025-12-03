@@ -21,6 +21,7 @@ namespace TaskManager
                 Console.WriteLine("Commands:");
                 Console.WriteLine("  add \"<description>\"  - Add a new task");
                 Console.WriteLine("  list                 - Show all tasks");
+                Console.WriteLine("  complete <number>    - Mark a task as completed");
                 return;
             }
 
@@ -56,9 +57,25 @@ namespace TaskManager
                         }
                         break;
 
+                    case "complete":
+                        if (string.IsNullOrEmpty(parser.Argument))
+                        {
+                            Console.WriteLine("Error: Task number is required.");
+                            Console.WriteLine("Usage: TaskManager complete <number>");
+                            return;
+                        }
+                        if (!int.TryParse(parser.Argument, out int taskNumber))
+                        {
+                            Console.WriteLine("Error: Task number must be a valid integer.");
+                            return;
+                        }
+                        taskService.CompleteTask(taskNumber);
+                        Console.WriteLine("Task marked as completed.");
+                        break;
+
                     default:
                         Console.WriteLine($"Unknown command: {parser.Command}");
-                        Console.WriteLine("Available commands: add, list");
+                        Console.WriteLine("Available commands: add, list, complete");
                         break;
                 }
             }
